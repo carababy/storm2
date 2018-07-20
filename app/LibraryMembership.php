@@ -48,7 +48,8 @@ class LibraryMembership extends \Eloquent
     /**
      * @return mixed
      */
-    public static function availableForMembership( $library_id ) {
+    public static function availableForMembership($library_id)
+    {
         $ids = \DB::table('user_library')->where('library_id', '=', $library_id)->pluck('user_id');
         return \eLibrary\User::whereNotIn('id', $ids)->get();
     }

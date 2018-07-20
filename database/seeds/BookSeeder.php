@@ -14,7 +14,7 @@ class BookSeeder extends Seeder
     {
         DB::table('books')->truncate();
 
-        Book::createBook( self::getDemoDataDirectory('1181818183.pdf'), [
+        Book::createBook(self::getDemoDataDirectory('1181818183.pdf'), [
             'id' => 1,
             'title' => 'Introduction to Algorithms',
             'genre_id' => 5,
@@ -27,7 +27,7 @@ class BookSeeder extends Seeder
             'user_id' => 1,
         ], Book::FILE_COPY);
 
-        Book::createBook( self::getDemoDataDirectory('2343928492.pdf'), [
+        Book::createBook(self::getDemoDataDirectory('2343928492.pdf'), [
             'id' => 2,
             'title' => 'Artificial Intelligence: A Modern Approach',
             'genre_id' => 5,
@@ -40,7 +40,7 @@ class BookSeeder extends Seeder
             'user_id' => 1,
         ], Book::FILE_COPY);
 
-        Book::createBook( self::getDemoDataDirectory('3248932432.pdf'), [
+        Book::createBook(self::getDemoDataDirectory('3248932432.pdf'), [
             'id' => 3,
             'title' => 'Fundamentals of Database Systems',
             'genre_id' => 5,
@@ -53,7 +53,7 @@ class BookSeeder extends Seeder
             'user_id' => 1,
         ], Book::FILE_COPY);
 
-        Book::createBook( self::getDemoDataDirectory('3249324823.pdf'), [
+        Book::createBook(self::getDemoDataDirectory('3249324823.pdf'), [
             'id' => 4,
             'title' => 'The Mythical Man-Month',
             'genre_id' => 5,
@@ -66,7 +66,7 @@ class BookSeeder extends Seeder
             'user_id' => 1,
         ], Book::FILE_COPY);
 
-        Book::createBook( self::getDemoDataDirectory('9898911919.pdf'), [
+        Book::createBook(self::getDemoDataDirectory('9898911919.pdf'), [
             'id' => 5,
             'title' => 'Compilers: Principles, Techniques, and Tools',
             'genre_id' => 5,
@@ -80,25 +80,24 @@ class BookSeeder extends Seeder
         ], Book::FILE_COPY);
 
 
-		Book::createBook( self::getDemoDataDirectory('239492349212.pdf'), [
-			'title' => 'Discrete Mathematics and its applications',
-			'genre_id' => 5,
-			'isbn' => '9780073383095',
-			'publisher' => 'Kenneth H Rosen',
-			'publish_date' => '05/06/2007',
-			'description' => 'A discrete mathematics course has more than one purpose. Students should learn a particular set of mathematical facts and how to apply them;',
-			'file' => '239492349212.pdf',
-			'library_id' => 3,
-			'user_id' => 5,
-		], Book::FILE_COPY);
-
+        Book::createBook(self::getDemoDataDirectory('239492349212.pdf'), [
+            'title' => 'Discrete Mathematics and its applications',
+            'genre_id' => 5,
+            'isbn' => '9780073383095',
+            'publisher' => 'Kenneth H Rosen',
+            'publish_date' => '05/06/2007',
+            'description' => 'A discrete mathematics course has more than one purpose. Students should learn a particular set of mathematical facts and how to apply them;',
+            'file' => '239492349212.pdf',
+            'library_id' => 3,
+            'user_id' => 5,
+        ], Book::FILE_COPY);
     }
 
     /**
      * @param $fileName
      * @return string
      */
-    public static function getDemoDataDirectory( $fileName )
+    public static function getDemoDataDirectory($fileName)
     {
         return storage_path('app/private') . '/DemoData/' . $fileName;
     }

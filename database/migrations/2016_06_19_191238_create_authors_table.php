@@ -19,7 +19,7 @@ class CreateAuthorsTable extends Migration
             $table->integer('book_id')->unsigned();
         });
 
-        Schema::table('authors', function (Blueprint $table){
+        Schema::table('authors', function (Blueprint $table) {
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
         });
     }

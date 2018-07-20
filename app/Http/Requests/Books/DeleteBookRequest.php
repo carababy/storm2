@@ -2,11 +2,12 @@
 
 namespace eLibrary\Http\Requests\Books;
 
+use Illuminate\Foundation\Http\FormRequest;
 use eLibrary\Http\Requests\Request;
 use Auth;
 use eLibrary\Book;
 
-class DeleteBookRequest extends Request
+class DeleteBookRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

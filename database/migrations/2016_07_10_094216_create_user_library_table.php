@@ -22,7 +22,7 @@ class CreateUserLibraryTable extends Migration
         });
 
 
-        Schema::table('user_library', function (Blueprint $table){
+        Schema::table('user_library', function (Blueprint $table) {
             $table->foreign('library_id')->references('id')->on('libraries')->onDelete('cascade');
         });
     }

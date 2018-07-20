@@ -58,12 +58,12 @@ class Library extends \Eloquent
      * @param $search_query
      * @return \Illuminate\Database\Query\Builder
      */
-    public static function search( $search_query )
+    public static function search($search_query)
     {
         $search_query = explode(' ', $search_query);
         $query = \DB::table('libraries')->where('name', 'LIKE', '%'.$search_query[0].'%');
-        if(count($search_query)>1){
-            for($i = 1; $i < count($search_query); $i++){
+        if (count($search_query)>1) {
+            for ($i = 1; $i < count($search_query); $i++) {
                 $query->orWhere('name', 'LIKE', '%'.$search_query[$i].'%');
             }
         }
@@ -77,39 +77,40 @@ class Library extends \Eloquent
      * @param $r
      * @return string
      */
-    public static function accessName( $r )
+    public static function accessName($r)
     {
-        if( $r === self::ACCESS_SUSPENDED ){
+        if ($r === self::ACCESS_SUSPENDED) {
             return 'Suspended';
         }
 
-        if( $r === self::ACCESS_MANAGER ){
+        if ($r === self::ACCESS_MANAGER) {
             return 'Manager';
         }
 
-        if( $r === self::ACCESS_WRITE ){
+        if ($r === self::ACCESS_WRITE) {
             return 'Read/Write';
         }
 
-        if( $r === self::ACCESS_DELETE ){
+        if ($r === self::ACCESS_DELETE) {
             return 'Read/Write/Delete';
         }
 
-        if( $r === self::ACCESS_READ ){
+        if ($r === self::ACCESS_READ) {
             return 'Read';
         }
 
-        if( $r === self::ACCESS_OWNER ){
+        if ($r === self::ACCESS_OWNER) {
             return 'Owner';
         }
 
         return '';
     }
 
-    public function removeCompletely() {
+    public function removeCompletely()
+    {
         $books = Book::where('library_id', '=', $this->id)->get();
-        if( null !== $books && $books->count() > 0 ) {
-            foreach($books as $book) {
+        if (null !== $books && $books->count() > 0) {
+            foreach ($books as $book) {
                 $book->removeCompletely();
             }
         }
@@ -124,24 +125,23 @@ class Library extends \Eloquent
      * @param $library_id
      * @return bool
      */
-    public static function userCan( $doWhat, $user_id, $library_id )
+    public static function userCan($doWhat, $user_id, $library_id)
     {
         $membership = LibraryMembership::where('user_id', '=', $user_id)
                                         ->where('library_id', '=', $library_id)
                                         ->first();
 
-        if( ! $membership->exists() ) {
+        if (! $membership->exists()) {
             return false;
         }
 
-        $user = User::find( $user_id );
+        $user = User::find($user_id);
 
-        if( null === $user_id ) {
+        if (null === $user_id) {
             return false;
         }
 
-        if( $doWhat === 'view' ){
-
+        if ($doWhat === 'view') {
             return $membership->access == Library::ACCESS_READ
                 || $membership->access == Library::ACCESS_WRITE
                 || $membership->access == Library::ACCESS_DELETE
@@ -149,30 +149,27 @@ class Library extends \Eloquent
                 || $membership->access == Library::ACCESS_OWNER;
         }
 
-        if( $doWhat === 'edit' ){
-
+        if ($doWhat === 'edit') {
             return $membership->access == Library::ACCESS_WRITE
                 || $membership->access == Library::ACCESS_DELETE
                 || $membership->access == Library::ACCESS_MANAGER
                 || $membership->access == Library::ACCESS_OWNER;
         }
 
-        if( $doWhat === 'delete' ){
-
+        if ($doWhat === 'delete') {
             return $membership->access == Library::ACCESS_DELETE
                 || $membership->access == Library::ACCESS_MANAGER
                 || $membership->access == Library::ACCESS_OWNER;
         }
 
-        if( $doWhat === 'create' ){
-
+        if ($doWhat === 'create') {
             return $membership->access == Library::ACCESS_WRITE
                 || $membership->access == Library::ACCESS_DELETE
                 || $membership->access == Library::ACCESS_MANAGER
                 || $membership->access == Library::ACCESS_OWNER;
         }
 
-        if( $doWhat === 'everything' ) {
+        if ($doWhat === 'everything') {
             return $membership->access == Library::ACCESS_WRITE
                 || $membership->access == Library::ACCESS_DELETE
                 || $membership->access == Library::ACCESS_MANAGER
@@ -181,7 +178,5 @@ class Library extends \Eloquent
         }
 
         return false;
-
     }
-
 }

@@ -15,7 +15,7 @@ class AdminController extends AuthenticatedController
      */
     public function users()
     {
-        $data = array();
+        $data = [];
         $data['user'] = $this->user;
         $data['users'] = User::where('id', '<>', $this->user->id)->get();
         return view('dashboard.users.index')->with($data);
@@ -25,16 +25,15 @@ class AdminController extends AuthenticatedController
      * @param $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function deleteuser( UserDeleteRequest $request )
+    public function deleteuser(UserDeleteRequest $request)
     {
 
-        User::removeCompletely( $request->get('user_id') );
+        User::removeCompletely($request->get('user_id'));
 
         return redirect()->back()->with('form_response', json_encode([
             'type' => 'success',
             'message' => 'User has been deleted successfully!'
         ]));
-
     }
 
     public function settings()

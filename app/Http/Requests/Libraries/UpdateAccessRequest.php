@@ -2,10 +2,11 @@
 
 namespace eLibrary\Http\Requests\Libraries;
 
+use Illuminate\Foundation\Http\FormRequest;
 use eLibrary\Http\Requests\Request;
 use eLibrary\Library;
 
-class UpdateAccessRequest extends Request
+class UpdateAccessRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +16,7 @@ class UpdateAccessRequest extends Request
     public function authorize()
     {
         $library_id = $this->request->get('library_id');
-        return (\Auth::check() && Library::userCan( 'everything', \Auth::user()->id, $library_id ));
+        return (\Auth::check() && Library::userCan('everything', \Auth::user()->id, $library_id));
     }
 
     /**

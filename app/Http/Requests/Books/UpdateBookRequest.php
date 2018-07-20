@@ -2,11 +2,12 @@
 
 namespace eLibrary\Http\Requests\Books;
 
+use Illuminate\Foundation\Http\FormRequest;
 use eLibrary\Book;
 use eLibrary\Http\Requests\Request;
 use Auth;
 
-class UpdateBookRequest extends Request
+class UpdateBookRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

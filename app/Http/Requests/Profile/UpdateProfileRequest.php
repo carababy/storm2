@@ -2,9 +2,10 @@
 
 namespace eLibrary\Http\Requests\Profile;
 
+use Illuminate\Foundation\Http\FormRequest;
 use eLibrary\Http\Requests\Request;
 
-class UpdateProfileRequest extends Request
+class UpdateProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

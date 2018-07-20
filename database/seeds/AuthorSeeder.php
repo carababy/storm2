@@ -74,6 +74,5 @@ class AuthorSeeder extends Seeder
             'name' => 'Ravi Sethi',
             'book_id' => 4,
         ]);
-
     }
 }
