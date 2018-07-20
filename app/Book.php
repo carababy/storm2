@@ -136,7 +136,7 @@ class Book extends \Eloquent
     public function removeCompletely()
     {
         $path = self::getBookPath($this->user_id, $this->file);
-        File::delete( $path );
+        File::delete($path);
         $this->delete();
     }
 
@@ -296,7 +296,7 @@ class Book extends \Eloquent
             $query->where('books.id', '=', $book_id);
         }
 
-		//dd('here')
+        //dd('here')
 
         if ($doWhat === 'view') {
             return $query->where('user_library.access', '=', Library::ACCESS_READ)
@@ -332,5 +332,4 @@ class Book extends \Eloquent
 
         return false;
     }
-
 }

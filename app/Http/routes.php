@@ -64,22 +64,22 @@ Route::group(['prefix' => '/dashboard', 'middleware' => [ 'auth' ] ], function (
             'uses' => 'LibraryController@makeNew'
         ]);
 
-        Route::get('/{library_id}/edit',[
+        Route::get('/{library_id}/edit', [
             'as' => 'dashboard.libraries.edit',
             'uses' => 'LibraryController@edit'
         ]);
 
-        Route::get('/{library_id}/view',[
+        Route::get('/{library_id}/view', [
             'as' => 'dashboard.libraries.view',
             'uses' => 'LibraryController@view'
         ]);
 
-        Route::get('/{library_id}/delete',[
+        Route::get('/{library_id}/delete', [
             'as' => 'dashboard.libraries.delete',
             'uses' => 'LibraryController@delete'
         ]);
 
-        Route::post('/create',[
+        Route::post('/create', [
             'as' => 'dashboard.libraries.create',
             'uses' => 'LibraryController@create'
         ]);
@@ -136,17 +136,17 @@ Route::group(['prefix' => '/dashboard', 'middleware' => [ 'auth' ] ], function (
                 'uses' => 'BooksController@update'
             ]);
 
-            Route::get('/edit/{book_id}',[
+            Route::get('/edit/{book_id}', [
                 'as' => 'dashboard.libraries.books.edit',
                 'uses' => 'BooksController@edit'
             ]);
 
-            Route::get('/view/{book_id}',[
+            Route::get('/view/{book_id}', [
                 'as' => 'dashboard.libraries.books.view',
                 'uses' => 'BooksController@view'
             ]);
 
-            Route::get('/delete/{book_id}',[
+            Route::get('/delete/{book_id}', [
                 'as' => 'dashboard.libraries.books.delete',
                 'uses' => 'BooksController@delete'
             ]);
@@ -155,21 +155,16 @@ Route::group(['prefix' => '/dashboard', 'middleware' => [ 'auth' ] ], function (
                 'as' => 'dashboard.libraries.books.request.remove',
                 'uses' => 'BooksController@remove'
             ]);
-
-
         });
-
     });
-
 });
 
 Route::group(['prefix' => '/user_files', 'middleware' => [ 'auth' ] ], function () {
 
-    Route::get('/{user_id}/{file_name}',[
+    Route::get('/{user_id}/{file_name}', [
         'as' => 'user_files.show',
         'uses' => 'RestrictedFilesController@show'
     ]);
-
 });
 
 Route::get('/home', 'HomeController@index');

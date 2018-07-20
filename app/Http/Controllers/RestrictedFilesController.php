@@ -1,6 +1,7 @@
 <?php
 
 namespace eLibrary\Http\Controllers;
+
 use Illuminate\Http\Request;
 use eLibrary\Http\Requests;
 use Response;
@@ -21,26 +22,24 @@ class RestrictedFilesController extends AuthenticatedController
         $file        = Book::where('file', '=', $file_name)->first();
         $canDownload = true;
 
-        if( null === $file ){
+        if (null === $file) {
             $canDownload = false;
         }
 
-        if( $file->user_id !== $this->user->id || $this->user->id != $user_id ){
+        if ($file->user_id !== $this->user->id || $this->user->id != $user_id) {
             $canDownload = false;
         }
 
-        if( $canDownload )
-        {
+        if ($canDownload) {
             $storagePath = storage_path('app/private/' . $user_id . '/' . $file_name);
 
-            if( file_exists( $storagePath ) )
-            {
+            if (file_exists($storagePath)) {
                 //Send the file to console once authorized
-                $file_contents = file_get_contents( $storagePath );
+                $file_contents = file_get_contents($storagePath);
                 return response()->make($file_contents, 200, [
                     'Content-Type' => 'application/pdf',
                     'Content-Disposition' => 'inline; filename="'.$file_name.'"'
-                ] );
+                ]);
             }
         }
 

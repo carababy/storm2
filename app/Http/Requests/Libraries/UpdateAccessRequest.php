@@ -15,7 +15,7 @@ class UpdateAccessRequest extends Request
     public function authorize()
     {
         $library_id = $this->request->get('library_id');
-        return (\Auth::check() && Library::userCan( 'everything', \Auth::user()->id, $library_id ));
+        return (\Auth::check() && Library::userCan('everything', \Auth::user()->id, $library_id));
     }
 
     /**

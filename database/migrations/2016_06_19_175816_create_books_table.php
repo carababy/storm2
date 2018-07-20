@@ -29,11 +29,10 @@ class CreateBooksTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('books', function (Blueprint $table){
+        Schema::table('books', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('library_id')->references('id')->on('libraries')->onDelete('cascade');
         });
-
     }
 
     /**

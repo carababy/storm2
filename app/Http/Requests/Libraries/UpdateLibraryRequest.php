@@ -17,7 +17,7 @@ class UpdateLibraryRequest extends Request
     {
         $user       = Auth::user();
         $library_id = $this->request->get('library_id');
-        return Library::userCan( 'edit', $user->id, $library_id );
+        return Library::userCan('edit', $user->id, $library_id);
     }
 
     /**
