@@ -32,7 +32,7 @@ class LibraryController extends AuthenticatedController
     public function view($library_id)
     {
         $membership = LibraryMembership::where('user_id', '=', $this->user->id)->where('library_id', '=', $library_id)->first();
-        $data = array();
+        $data = [];
         $data['user']    = $this->user;
         $data['library'] = Library::find($library_id);
         $data['books']   = $data['library']->books();
@@ -159,11 +159,11 @@ class LibraryController extends AuthenticatedController
             }
 
             if (! $notexists) {
-                LibraryMembership::create(array(
+                LibraryMembership::create([
                     'library_id' => $library_id,
                     'user_id' => $new_member,
                     'access' => 'R',
-                ));
+                ]);
             }
         }
 

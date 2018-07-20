@@ -15,7 +15,7 @@ class AdminController extends AuthenticatedController
      */
     public function users()
     {
-        $data = array();
+        $data = [];
         $data['user'] = $this->user;
         $data['users'] = User::where('id', '<>', $this->user->id)->get();
         return view('dashboard.users.index')->with($data);

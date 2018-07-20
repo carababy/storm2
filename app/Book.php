@@ -63,7 +63,7 @@ class Book extends \Eloquent
      * Book constructor.
      * @param array $attributes
      */
-    public function __construct(array $attributes = array())
+    public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
         $this->filesystem = Storage::disk('private');

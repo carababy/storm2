@@ -14,7 +14,7 @@ class DashboardController extends AuthenticatedController
 {
     public function index()
     {
-        $data = array();
+        $data = [];
 
         //user stats
         $data['user']                   = $this->user;
@@ -38,11 +38,11 @@ class DashboardController extends AuthenticatedController
 
     public function search()
     {
-        $data = array(
+        $data = [
             'q' => null,
             'libraries' => null,
             'books' => null,
-        );
+        ];
         $search_str = Input::get('q');
         if (null !== $search_str && "" !== $search_str) {
             $data['q'] = $search_str;
@@ -57,7 +57,7 @@ class DashboardController extends AuthenticatedController
 
     public function books()
     {
-        $data = array();
+        $data = [];
         $data['user'] = $this->user;
         $search_str   = Input::get('q');
         if (null === $search_str) {
