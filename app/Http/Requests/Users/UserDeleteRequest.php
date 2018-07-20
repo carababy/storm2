@@ -2,9 +2,10 @@
 
 namespace eLibrary\Http\Requests\Users;
 
+use Illuminate\Foundation\Http\FormRequest;
 use eLibrary\Http\Requests\Request;
 
-class UserDeleteRequest extends Request
+class UserDeleteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

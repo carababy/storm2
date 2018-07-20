@@ -2,11 +2,12 @@
 
 namespace eLibrary\Http\Requests\Libraries;
 
+use Illuminate\Foundation\Http\FormRequest;
 use eLibrary\Http\Requests\Request;
 use eLibrary\Library;
 use eLibrary\User;
 
-class CreateLibraryRequest extends Request
+class CreateLibraryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

@@ -2,10 +2,11 @@
 
 namespace eLibrary\Http\Requests\Libraries;
 
+use Illuminate\Foundation\Http\FormRequest;
 use eLibrary\Http\Requests\Request;
 use eLibrary\Library;
 
-class UpdateAccessRequest extends Request
+class UpdateAccessRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
